@@ -13,8 +13,8 @@ public final class Contacts {
     /* Inner class that defines the table contents */
     public static abstract class ContactColumns implements BaseColumns {
         public static final String TABLE_NAME = "contacts";
-        public static final String COLUMN_NAME_ENTRY_ID = "entryid";
-        public static final String COLUMN_NAME_FULL_NAME = "full_name";
+        public static final String COLUMN_NAME_ENTRY_ID = "contactId";
+        public static final String COLUMN_NAME_FULL_NAME = "fullName";
         public static final String COLUMN_NAME_PHONE = "phone";
         public static final String COLUMN_NAME_DIRECTION = "direction";
         public static final String COLUMN_NAME_HABILITY_1 = "hability1";
