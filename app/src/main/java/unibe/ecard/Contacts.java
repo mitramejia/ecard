@@ -19,6 +19,7 @@ public final class Contacts {
         public static final String COLUMN_NAME_DIRECTION = "direction";
         public static final String COLUMN_NAME_HABILITY_1 = "hability1";
         public static final String COLUMN_NAME_HABILITY_2 = "hability2";
+        public static final String COLUMN_NAME_NULLABLE = "nullable";
 
     }
 }
