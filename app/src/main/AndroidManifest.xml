@@ -37,6 +37,13 @@
             android:name=".ShareViaNfcActivity"
             android:theme="@style/AppTheme">
         </activity>
+
+        <!-- Share Via NFC Activity -->
+        <activity
+            android:name=".CompareProfilesActivity"
+            android:theme="@style/AppTheme">
+        </activity>
+
     </application>
 
 </manifest>
