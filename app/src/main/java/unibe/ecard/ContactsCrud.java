@@ -1,11 +1,9 @@
 package unibe.ecard;
 
-import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import unibe.ecard.Contacts.ContactColumns;
 
 /**
@@ -13,7 +11,8 @@ import unibe.ecard.Contacts.ContactColumns;
  */
 public class ContactsCrud {
 
-    String columnId = ContactColumns.COLUMN_NAME_ENTRY_ID;
+    String tableName = ContactColumns.TABLE_NAME;
+    String columnNullable = ContactColumns.COLUMN_NAME_NULLABLE;
     String columnFullName = ContactColumns.COLUMN_NAME_FULL_NAME;
     String columnPhone = ContactColumns.COLUMN_NAME_PHONE;
     String columnDirection = ContactColumns.COLUMN_NAME_DIRECTION;
@@ -55,14 +54,11 @@ public class ContactsCrud {
 
             // Insert the new row, returning the primary key value of the new row
             long newRowId;
-            newRowId = getDb().insert(
-                    getContactsDbHelper().TABLE_NAME,
-                    getContactsDbHelper().COLUMN_NAME_NULLABLE,
-                    values);
+            newRowId = getDb().insert(tableName, columnNullable, values);
+            System.out.println("New Row ID: " + newRowId);
+
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            System.out.println(newRowId);
         }
 
     }

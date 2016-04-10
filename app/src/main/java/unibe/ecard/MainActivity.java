@@ -14,7 +14,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void shareViaNfc(View view) {
-        Intent intent = new Intent(this, ShareViaNfcActivity.class);
-        startActivity(intent);
+
+        ContactsCrud contactsCrud = new ContactsCrud(getApplicationContext());
+        contactsCrud.insert("Manuel", "809 752 4142", "Invi #421", "HTML & CSS", "iOS Development");
+//        Intent intent = new Intent(this, ShareViaNfcActivity.class);
+//        startActivity(intent);
     }
 }
