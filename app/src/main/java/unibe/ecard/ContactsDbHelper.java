@@ -10,15 +10,19 @@ import unibe.ecard.Contacts.ContactColumns;
  */
 public class ContactsDbHelper extends SQLiteOpenHelper {
     // If you change the database schema, you must increment the database version.
-    public static final int DATABASE_VERSION = 1;
-    public static final String DATABASE_NAME = "FeedReader.db";
+    public static final int DATABASE_VERSION = 4;
+    public static final String DATABASE_NAME = "Ecard.db";
     private static final String TEXT_TYPE = " TEXT";
     private static final String COMMA_SEP = ",";
     private static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + ContactColumns.TABLE_NAME + " (" +
-                    ContactColumns._ID + " INTEGER PRIMARY KEY," +
-                    ContactColumns.COLUMN_NAME_ENTRY_ID + TEXT_TYPE + COMMA_SEP +
-                    ContactColumns.COLUMN_NAME_FULL_NAME + TEXT_TYPE + COMMA_SEP +
+                    ContactColumns.COLUMN_NAME_ENTRY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT" + COMMA_SEP +
+                    ContactColumns.COLUMN_NAME_FULL_NAME + TEXT_TYPE  + COMMA_SEP +
+                    ContactColumns.COLUMN_NAME_PHONE + TEXT_TYPE  + COMMA_SEP +
+                    ContactColumns.COLUMN_NAME_DIRECTION + TEXT_TYPE  + COMMA_SEP +
+                    ContactColumns.COLUMN_NAME_HABILITY_1 + TEXT_TYPE  + COMMA_SEP +
+                    ContactColumns.COLUMN_NAME_HABILITY_2 + TEXT_TYPE  + COMMA_SEP +
+                    ContactColumns.COLUMN_NAME_NULLABLE + TEXT_TYPE  +
                     " )";
 
     private static final String SQL_DELETE_ENTRIES =
