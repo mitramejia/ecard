@@ -14,6 +14,19 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    TextView textUserFullName = null;
+    TextView textUserPhone = null;
+    TextView textUserDirection = null;
+    TextView textUserEmail = null;
+    TextView textUserHability1 = null;
+    TextView textUserHability2 = null;
+
+    String currentUserFullName = null;
+    String currentUserPhone = null;
+    String currentUserDirection = null;
+    String currentUserEmail = null;
+    String currentUserHability1 = null;
+    String currentUserHability2 = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         // First we load our User's data from the database
         ContactsCrud cc = new ContactsCrud(getApplicationContext());
-        cc.createContact("Mitra", "809 124 5422", "mitra.mejia@gmail.com", "Jose Contreras", "CSS", "HTML");
+//      cc.createContact("Mitra", "809 124 5422", "mitra.mejia@gmail.com", "Jose Contreras", "CSS", "HTML");
 
         // Start at Arraty Index at 1 because we dont want to display the user id on the profile, right :P
         ArrayList<String> currentContact = cc.getContactById("1");
@@ -74,7 +87,11 @@ public class MainActivity extends AppCompatActivity {
         MultiDex.install(this);
     }
 
-    public void editUserProfile(View view) {
+    public void updateProfileFields(Context context) {
+
+    }
+
+    public void goToActivityEditUserProfile(View view) {
         Intent intent = new Intent(this, EditProfileActivity.class);
         startActivity(intent);
     }
