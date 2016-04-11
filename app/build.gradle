@@ -26,6 +26,4 @@ dependencies {
     compile 'com.android.support:design:23.2.1'
     compile 'com.squareup.okhttp3:okhttp:3.2.0'
     compile 'com.android.support:multidex:1.0.0'
-    compile files('libs/ormlite-android-4.49.jar')
-    compile files('libs/ormlite-core-4.49.jar')
 }
