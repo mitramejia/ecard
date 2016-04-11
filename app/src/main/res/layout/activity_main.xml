@@ -219,7 +219,7 @@
             android:layout_gravity="bottom|left"
             android:layout_marginBottom="10dp" />
 
-    </GridLayout>
+        </GridLayout>
 
     </ScrollView>
 
@@ -230,10 +230,23 @@
         android:layout_marginTop="22dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="19dp"
+        android:layout_marginEnd="22dp"
         android:background="@color/transparent"
         android:src="@mipmap/icon_done"
         android:onClick="updateUserProfile" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonShareViaNFc"
+        android:background="@color/transparent"
+        android:src="@mipmap/icon_share"
+        android:onClick="shareViaNfc"
+        android:layout_alignTop="@+id/buttonEditProfile"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="22dp"
+        android:scrollIndicators="bottom"
+        android:focusableInTouchMode="true" />
 
 
 </RelativeLayout>
