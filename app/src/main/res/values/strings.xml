@@ -11,7 +11,11 @@
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
     <string name="button_text_share_via_nfc">Share Profile</string>
+    <string name="text_update_successful">Profile Updated</string>
+    <string name="text_update_unsuccessful">Error Updating Profile</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+
+
 </resources>
