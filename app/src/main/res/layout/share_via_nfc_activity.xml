@@ -5,6 +5,15 @@
     android:layout_width="match_parent"
     tools:context="unibe.ecard.ShareViaNfcActivity"
     android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"/>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="54dp"
@@ -18,8 +27,8 @@
         android:textIsSelectable="false" />
 
     <ImageView
-        android:layout_width="304dp"
-        android:layout_height="417dp"
+        android:layout_width="266dp"
+        android:layout_height="364dp"
         android:id="@+id/imageView"
         android:layout_gravity="center"
         android:src="@mipmap/share_via_nfc" />
