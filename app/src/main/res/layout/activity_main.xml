@@ -225,7 +225,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="19dp"
         android:src="@mipmap/icon_edit"
-        android:onClick="editUserProfile"
+        android:onClick="goToActivityEditUserProfile"
         android:adjustViewBounds="false"
         android:contextClickable="false"
         android:background="@color/transparent"
