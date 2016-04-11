@@ -5,79 +5,111 @@ import android.content.Intent;
 import android.support.multidex.MultiDex;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
+import android.view.ViewTreeObserver;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import android.widget.ScrollView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView textUserFullName = null;
-    TextView textUserPhone = null;
-    TextView textUserDirection = null;
-    TextView textUserEmail = null;
-    TextView textUserHability1 = null;
-    TextView textUserHability2 = null;
+    EditText editTextUserFullName = null;
+    EditText editTextUserDirection = null;
+    EditText editTextUserPhone = null;
+    EditText editTextUserEmail = null;
+    EditText editTextUserHability1 = null;
+    EditText editTextUserHability2 = null;
 
-    String currentUserFullName = null;
-    String currentUserPhone = null;
-    String currentUserDirection = null;
-    String currentUserEmail = null;
-    String currentUserHability1 = null;
-    String currentUserHability2 = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        TextView textUserFullName;
-        TextView textUserPhone;
-        TextView textUserDirection;
-        TextView textUserEmail;
-        TextView textUserHability1;
-        TextView textUserHability2;
-
-        String currentUserFullName;
-        String currentUserPhone;
-        String currentUserDirection;
-        String currentUserEmail;
-        String currentUserHability1;
-        String currentUserHability2;
-
         // First we load our User's data from the database
-        ContactsCrud cc = new ContactsCrud(getApplicationContext());
-//      cc.createContact("Mitra", "809 124 5422", "mitra.mejia@gmail.com", "Jose Contreras", "CSS", "HTML");
+        ContactsCrud contactsCrud = new ContactsCrud(getApplicationContext());
 
         // Start at Arraty Index at 1 because we dont want to display the user id on the profile, right :P
-        ArrayList<String> currentContact = cc.getContactById("1");
-        currentUserFullName = currentContact.get(1);
-        currentUserPhone = currentContact.get(2);
-        currentUserEmail = currentContact.get(3);
-        currentUserDirection = currentContact.get(4);
-        currentUserHability1 = currentContact.get(5);
-        currentUserHability2 = currentContact.get(6);
+        ArrayList<String> currentContactFields = contactsCrud.getContactById("1");
+        String currentUserFullName = currentContactFields.get(1);
+        String currentUserPhone = currentContactFields.get(2);
+        String currentUserEmail = currentContactFields.get(3);
+        String currentUserDirection = currentContactFields.get(4);
+        String currentUserHability1 = currentContactFields.get(5);
+        String currentUserHability2 = currentContactFields.get(6);
 
-        // Paint the layout before accessing any UI component
+        // Paint the layout before acontactsCrudessing any UI component
         setContentView(R.layout.activity_main);
 
-        // Get all TextViews from the layout
-        textUserFullName = (TextView) findViewById(R.id.textUserFullName);
-        textUserDirection = (TextView) findViewById(R.id.textUserDirection);
-        textUserEmail = (TextView) findViewById(R.id.textUserEmail);
-        textUserPhone = (TextView) findViewById(R.id.textUserPhone);
-        textUserHability1 = (TextView) findViewById(R.id.textUserHability1);
-        textUserHability2 = (TextView) findViewById(R.id.textUserHability2);
+        // Update all EditText's
+        editTextUserFullName = ((EditText) findViewById(R.id.editTextUserFullName));
+        editTextUserDirection = ((EditText) findViewById(R.id.editTextUserDirection));
+        editTextUserEmail = ((EditText) findViewById(R.id.editTextUserEmail));
+        editTextUserPhone = ((EditText) findViewById(R.id.editTextUserPhone));
+        editTextUserHability1 = ((EditText) findViewById(R.id.editTextUserHability1));
+        editTextUserHability2 = ((EditText) findViewById(R.id.editTextUserHability2));
 
-        // Fill TextViews with data from the database
-        textUserFullName.setText(currentUserFullName);
-        textUserPhone.setText(currentUserPhone);
-        textUserEmail.setText(currentUserEmail);
-        textUserDirection.setText(currentUserDirection);
-        textUserHability1.setText(currentUserHability1);
-        textUserHability2.setText(currentUserHability2);
+        editTextUserFullName.setText(currentUserFullName);
+        editTextUserDirection.setText(currentUserDirection);
+        editTextUserEmail.setText(currentUserEmail);
+        editTextUserPhone.setText(currentUserPhone);
+        editTextUserHability1.setText(currentUserHability1);
+        editTextUserHability2.setText(currentUserHability2);
 
+    }
+
+
+    public void updateUserProfile(View view) {
+
+        // First we load our User's data from the database
+        ContactsCrud contactsCrud = new ContactsCrud(view.getContext());
+
+        boolean contactUpdated = contactsCrud.updateContact(
+                "1",
+                this.getEditTextUserFullName().getText().toString(),
+                this.getEditTextUserPhone().getText().toString(),
+                this.getEditTextUserDirection().getText().toString(),
+                this.getEditTextUserEmail().getText().toString(),
+                this.getEditTextUserHability1().getText().toString(),
+                this.getEditTextUserHability2().getText().toString()
+        );
+
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+
+        if (contactUpdated)
+            Toast.makeText(view.getContext(),
+                    R.string.text_update_successful, Toast.LENGTH_LONG).show();
+        else
+            Toast.makeText(view.getContext(),
+                    R.string.text_update_unsuccessful, Toast.LENGTH_LONG).show();
+    }
+
+
+    public EditText getEditTextUserFullName() {
+        return editTextUserFullName;
+    }
+
+    public EditText getEditTextUserDirection() {
+        return editTextUserDirection;
+    }
+
+    public EditText getEditTextUserEmail() {
+        return editTextUserEmail;
+    }
+
+    public EditText getEditTextUserHability1() {
+        return editTextUserHability1;
+    }
+
+    public EditText getEditTextUserHability2() {
+        return editTextUserHability2;
+    }
+
+    public EditText getEditTextUserPhone() {
+        return editTextUserPhone;
     }
 
     // http://developer.android.com/tools/building/multidex.html
@@ -87,14 +119,7 @@ public class MainActivity extends AppCompatActivity {
         MultiDex.install(this);
     }
 
-    public void updateProfileFields(Context context) {
 
-    }
-
-    public void goToActivityEditUserProfile(View view) {
-        Intent intent = new Intent(this, EditProfileActivity.class);
-        startActivity(intent);
-    }
 
     public void shareViaNfc(View view) {
 

@@ -42,7 +42,6 @@
         <activity
             android:name=".CompareProfilesActivity"
             android:theme="@style/AppTheme"></activity>
-        <activity android:name=".EditProfileActivity"></activity>
     </application>
 
 </manifest>

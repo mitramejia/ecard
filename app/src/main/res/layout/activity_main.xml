@@ -8,14 +8,17 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="unibe.ecard.MainActivity"
-    android:padding="0dp">
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:padding="0dp"
+    android:id="@+id/relativeLayout">
 
-    <TextView
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="@dimen/profileHeaderHeight"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Mitra Mejía"
-        android:id="@+id/textUserFullName"
+        android:id="@+id/editTextUserFullName"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="end"
@@ -24,13 +27,22 @@
         android:textColor="@color/white"
         android:backgroundTintMode="src_over"
         android:backgroundTint="@color/colorProfileImageBg"
-        android:contextClickable="false"
         android:textStyle="bold"
         android:textIsSelectable="true"
         android:singleLine="true"
-        android:elegantTextHeight="false" />
+        android:elegantTextHeight="false"
+        android:inputType="text" />
 
-    <GridLayout
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:nextFocusUp="@+id/relativeLayout"
+        android:nextFocusLeft="@+id/relativeLayout"
+        android:layout_below="@+id/editTextUserFullName">
+
+
+        <GridLayout
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="false"
@@ -45,7 +57,7 @@
         android:paddingTop="@dimen/activity_vertical_margin"
         android:paddingBottom="@dimen/activity_vertical_margin"
         android:rowOrderPreserved="true"
-        android:layout_below="@+id/textUserFullName"
+            android:layout_below="@+id/editTextUserFullName"
         android:layout_alignParentTop="false"
         android:layout_alignParentBottom="false"
         android:alignmentMode="alignMargins"
@@ -54,7 +66,8 @@
         android:transitionGroup="false"
         android:useDefaultMargins="true"
         android:layout_marginTop="0dp"
-        android:focusableInTouchMode="true">
+            android:focusableInTouchMode="true"
+            android:nestedScrollingEnabled="false">
 
         <TextView
             android:layout_width="wrap_content"
@@ -62,49 +75,49 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Habilities"
             android:id="@+id/labelUserHabilities"
-            android:layout_row="1"
+            android:layout_row="0"
             android:layout_column="1"
             android:textStyle="bold"
-            android:minHeight="30dp"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="20dp"
+            android:clickable="true"
+            android:inputType="text"
+            android:focusable="true"
+            android:contextClickable="true" />
 
         <ImageView
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:id="@+id/imageView3"
-            android:layout_row="2"
+            android:id="@+id/iconStar1"
+            android:layout_row="1"
             android:layout_column="0"
             android:src="@mipmap/icon_star"
             android:layout_gravity="bottom|left|fill_vertical|top"
             android:layout_margin="0dp"
-            android:layout_marginTop="12dp"
-            android:minHeight="30dp" />
+            android:layout_marginTop="12dp" />
 
         <ImageView
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:id="@+id/imageView2"
-            android:layout_row="3"
+            android:id="@+id/iconStar2"
+            android:layout_row="2"
             android:layout_column="0"
             android:src="@mipmap/icon_star"
             android:layout_margin="0dp"
-            android:layout_marginTop="12dp"
-            android:minHeight="30dp" />
+            android:layout_marginTop="24dp" />
 
-        <TextView
+            <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="JavaScript"
-            android:id="@+id/textUserHability1"
-            android:layout_row="2"
+                android:id="@+id/editTextUserHability1"
+                android:layout_row="1"
             android:layout_column="1"
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:textColor="@android:color/black"
             android:singleLine="false"
             android:layout_gravity="left"
-            android:layout_marginLeft="@dimen/activity_vertical_margin"
-            android:minHeight="30dp" />
+                android:layout_marginLeft="@dimen/activity_vertical_margin" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -112,123 +125,115 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Contact"
             android:id="@+id/labelUserContact"
-            android:layout_row="4"
+            android:layout_row="3"
             android:layout_column="1"
             android:layout_marginTop="@dimen/label_margin_vertical"
             android:textStyle="bold"
-            android:layout_gravity="left"
-            android:minHeight="30dp" />
+            android:layout_gravity="left" />
 
-        <TextView
+            <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Android Development"
-            android:id="@+id/textUserHability2"
-            android:layout_row="3"
+                android:id="@+id/editTextUserHability2"
+                android:layout_row="2"
             android:layout_column="1"
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:textColor="@android:color/black"
             android:singleLine="false"
             android:layout_gravity="top"
-            android:layout_marginLeft="@dimen/activity_vertical_margin"
-            android:minHeight="30dp" />
+                android:layout_marginLeft="@dimen/activity_vertical_margin" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageView4"
-            android:layout_row="5"
+            android:layout_row="4"
             android:layout_column="0"
             android:src="@mipmap/icon_location"
             android:layout_gravity="bottom|left|fill_vertical|top"
-            android:layout_margin="0dp"
-            android:minHeight="30dp" />
+            android:layout_margin="0dp" />
 
-        <TextView
+            <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Av. Independencia KM 10/2"
-            android:id="@+id/textUserDirection"
-            android:layout_row="5"
+                android:id="@+id/editTextUserDirection"
+                android:layout_row="4"
             android:layout_column="1"
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:textColor="@android:color/black"
             android:singleLine="false"
             android:layout_gravity="left"
-            android:layout_marginLeft="@dimen/activity_vertical_margin"
-            android:minHeight="30dp" />
+                android:layout_marginLeft="@dimen/activity_vertical_margin" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageView5"
-            android:layout_row="6"
+            android:layout_row="5"
             android:layout_column="0"
             android:src="@mipmap/icon_phone"
             android:layout_margin="0dp"
             android:layout_gravity="bottom|left"
-            android:layout_marginBottom="12dp"
-            android:minHeight="30dp" />
+            android:layout_marginBottom="12dp" />
 
-        <TextView
+            <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="809 891 6169"
-            android:id="@+id/textUserPhone"
-            android:layout_row="6"
+                android:id="@+id/editTextUserPhone"
+                android:layout_row="5"
             android:layout_column="1"
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:textColor="@android:color/black"
             android:singleLine="false"
             android:layout_gravity="left"
-            android:layout_marginLeft="@dimen/activity_vertical_margin"
-            android:minHeight="30dp" />
+                android:layout_marginLeft="@dimen/activity_vertical_margin" />
 
-        <TextView
+            <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="mitra@mitramejia.com"
-            android:id="@+id/textUserEmail"
-            android:layout_row="7"
+                android:id="@+id/editTextUserEmail"
+                android:layout_row="6"
             android:layout_column="1"
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:textColor="@android:color/black"
             android:singleLine="false"
             android:layout_gravity="left"
-            android:layout_marginLeft="@dimen/activity_vertical_margin"
-            android:minHeight="30dp" />
+                android:layout_marginLeft="@dimen/activity_vertical_margin" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageView6"
-            android:layout_row="7"
+            android:layout_row="6"
             android:layout_column="0"
             android:src="@mipmap/icon_mail"
             android:layout_margin="0dp"
             android:layout_gravity="bottom|left"
-            android:minHeight="30dp"
             android:layout_marginBottom="10dp" />
 
     </GridLayout>
 
+    </ScrollView>
+
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/buttonEditUserProfile"
+        android:id="@+id/buttonEditProfile"
         android:layout_marginTop="22dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="19dp"
-        android:src="@mipmap/icon_edit"
-        android:onClick="goToActivityEditUserProfile"
-        android:adjustViewBounds="false"
-        android:contextClickable="false"
         android:background="@color/transparent"
-        android:longClickable="true" />
+        android:src="@mipmap/icon_done"
+        android:onClick="updateUserProfile" />
+
 
 </RelativeLayout>
