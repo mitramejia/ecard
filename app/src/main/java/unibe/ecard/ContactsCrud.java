@@ -124,6 +124,50 @@ public class ContactsCrud {
     }
 
     /**
+     * Updates a contact field.
+     *
+     * @param contactId  the contact id
+     * @param columnName the column name of the Contacts table to edit
+     * @param newValue   the new value to updte
+     * @return the boolean
+     */
+    public boolean updateContact(String contactId,
+                                 String newFullName,
+                                 String newPhone,
+                                 String newEmail,
+                                 String newDirection,
+                                 String newHability1,
+                                 String newHability2) {
+
+        long result = 100;
+        try {
+            // Create a new map of values, where column names are the keys
+            ContentValues newValues = new ContentValues();
+            newValues.put(columnFullName, newFullName);
+            newValues.put(columnPhone, newPhone);
+            newValues.put(columnEmail, newEmail);
+            newValues.put(columnDirection, newDirection);
+            newValues.put(columnHability1, newHability1);
+            newValues.put(columnHability2, newHability2);
+
+            // Update the new row, returning the primary key value of the new row
+            String selection = columnId + "=?";
+            String[] selectionArgs = {String.valueOf(contactId)};
+
+            result = getDb().update(tableName, newValues, selection, selectionArgs);
+
+        } catch (SQLiteException e) {
+            Log.d("SQL Error", e.getMessage());
+            e.printStackTrace();
+        }
+
+        if (result == -1)
+            return false;
+        else
+            return true;
+    }
+
+    /**
      * Gets all contacts.
      */
     public void getAllContacts() {
