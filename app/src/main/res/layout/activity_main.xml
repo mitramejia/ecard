@@ -219,6 +219,46 @@
             android:layout_gravity="bottom|left"
             android:layout_marginBottom="10dp" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Social"
+                android:id="@+id/textView"
+                android:layout_row="7"
+                android:layout_column="1"
+                android:layout_marginTop="@dimen/label_margin_vertical"
+                android:textStyle="bold"
+                android:layout_gravity="left"
+                android:autoText="false"
+                android:inputType="none" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Social"
+                android:id="@+id/buttonSocialNetworkLink"
+                android:layout_row="8"
+                android:layout_column="1"
+                android:layout_marginTop="@dimen/label_margin_vertical"
+                android:textStyle="normal"
+                android:layout_gravity="left"
+                android:singleLine="false"
+                android:onClick="openUrl"
+                android:textColorLink="@color/highlighted_text_material_light" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/profilePicture"
+                android:longClickable="true"
+                android:maxWidth="10dp"
+                android:layout_alignTop="@+id/scrollView"
+                android:layout_alignStart="@+id/buttonShareViaNFc"
+                android:layout_row="9"
+                android:layout_column="1" />
+
         </GridLayout>
 
     </ScrollView>
@@ -247,6 +287,5 @@
         android:layout_marginStart="22dp"
         android:scrollIndicators="bottom"
         android:focusableInTouchMode="true" />
-
 
 </RelativeLayout>

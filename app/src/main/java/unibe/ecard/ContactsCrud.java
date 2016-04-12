@@ -240,6 +240,7 @@ public class ContactsCrud {
         //you should always use the try catch statement incase
         //something goes wrong when trying to read the data
         try {
+            Log.d("getContactById", "Ran");
             DatabaseUtils.dumpCursor(c);
             // looping through all rows and adding to list
             if (c.moveToFirst()) {
@@ -263,6 +264,53 @@ public class ContactsCrud {
         return fields;
     }
 
+
+    /**
+     * Gets a contact by id.
+     *
+     * @param contactId the contact id
+     * @param contactId the contact id
+     * @return String containing all columns from the Contact row
+     */
+    public String getContactField(String contactId, String columnName) {
+
+        String field = null;
+        String[] projection = {
+            columnName
+        };
+        //get the cursor you're going to use
+        String[] selectionArgs = {String.valueOf(contactId)};
+
+        Cursor c = db.query(
+                tableName,                  // The table to query
+                projection,                 // The columns to return
+                columnId + "=?",            // The columns for the WHERE clause
+                selectionArgs,              // The values for the WHERE clause
+                null,                       // don't group the rows
+                null,                       // don't filter by row groups
+                null                        // The sort order
+        );
+
+        //you should always use the try catch statement in case
+        //something goes wrong when trying to read the data
+        try {
+            Log.d("getContactField", "Ran");
+            DatabaseUtils.dumpCursor(c);
+            // looping through all rows and adding to list
+            if (c.moveToFirst()) {
+                field = c.getString(0);
+            }
+        } catch (SQLiteException e) {
+            Log.d("SQL Error", e.getMessage());
+            e.printStackTrace();
+            return null;
+        } finally {
+            //release all your resources
+            c.close();
+            getDb().close();
+        }
+        return field;
+    }
 
 }
 
