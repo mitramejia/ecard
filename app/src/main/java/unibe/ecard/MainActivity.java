@@ -44,11 +44,15 @@ public class MainActivity extends AppCompatActivity {
     static final String API_URL = "https://api.fullcontact.com/v2/person.json?";
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // First we load our User's data from the database
         ContactsCrud contactsCrud = new ContactsCrud(getApplicationContext());
+
+   	if(!contactsCrud.updateContact("1","Mitra Mejia", "809 124 5422","mitra@mitramejia.com", "Jose Contreras", "CSS", "HTML"))
+            contactsCrud.createContact("Mitra", "809 124 5422","mitra.mejia@gmail.com", "Jose Contreras", "CSS", "HTML");
 
         // Start at Arraty Index at 1 because we dont want to display the user id on the profile, right :P
         ArrayList<String> currentContactFields = contactsCrud.getContactById("1");
@@ -80,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
 
         // Excecute API call to retrieve user info
         new RetrieveFeedTask().execute();
-
     }
 
 
