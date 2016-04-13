@@ -40,6 +40,9 @@ public class ContactsCrud {
         return db;
     }
 
+    public void deleteEntries() {
+        getDb().execSQL( "DROP TABLE IF EXISTS " + ContactColumns.TABLE_NAME);
+    }
 
     /**
      * Creates a contact row.
@@ -123,14 +126,7 @@ public class ContactsCrud {
             return true;
     }
 
-    /**
-     * Updates a contact field.
-     *
-     * @param contactId  the contact id
-     * @param columnName the column name of the Contacts table to edit
-     * @param newValue   the new value to updte
-     * @return the boolean
-     */
+
     public boolean updateContact(String contactId,
                                  String newFullName,
                                  String newPhone,

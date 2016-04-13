@@ -13,7 +13,7 @@ public class ContactsDbHelper extends SQLiteOpenHelper {
     // If you change the database schema, you must increment the database version.
     // Remember you also need to save a new Contact after incrementing the database version
     // Since the data its deleted
-    public static final int DATABASE_VERSION = 7;
+    public static final int DATABASE_VERSION = 10;
     public static final String DATABASE_NAME = "Ecard.db";
     private static final String TEXT_TYPE = " TEXT";
     private static final String COMMA_SEP = ",";
